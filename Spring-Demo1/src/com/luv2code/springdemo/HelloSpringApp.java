@@ -11,7 +11,7 @@ public class HelloSpringApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		//retrieve a bean from the spring container.
 		Coach theCoach = context.getBean("myCoach",Coach.class);
-		Coach theCricketCoach = context.getBean("myCricketCoach",Coach.class);   
+		CricketCoach theCricketCoach = context.getBean("myCricketCoach",CricketCoach.class);   
 				
 		//call methods on the bean
 		System.out.println(theCoach.getDailyWorkout());
@@ -19,6 +19,7 @@ public class HelloSpringApp {
 		//close the context.
 		System.out.println(theCricketCoach.getDailyWorkout());
 		System.out.println(theCricketCoach.getDailyFortune());
+		System.out.println("The email address : "+theCricketCoach.getEmailAddress());
 		
 		context.close();
 		
