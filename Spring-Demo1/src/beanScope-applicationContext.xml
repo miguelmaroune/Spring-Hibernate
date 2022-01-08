@@ -6,26 +6,20 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-<!-- property placeholder used to make spring read the file  -->
-<context:property-placeholder location="classpath:sport.properties"/>
+
     <!-- Define your beans here -->
    <bean id="myLoggerConfig" class="com.luv2code.springdemo.MyLoggerConfig" init-method="initLogger">
     	<property name="rootLoggerLevel" value="FINE" />
     	<property name="printedLoggerLevel" value="FINE"/>
     </bean>
-   
+   <!--  scope = "prototype" will create a new instance each time -->
    <bean id="myCoach"
-       class="com.luv2code.springdemo.FootballCoach">
+       class="com.luv2code.springdemo.FootballCoach"
+       scope = "prototype">
        <!--  set up constructor injection -->
        <constructor-arg ref="myFortuneService"/>
    </bean>
    
-   <bean id="myCricketCoach"
-   class = "com.luv2code.springdemo.CricketCoach">
-   <property  name ="fortuneService" ref ="myFortuneService"/>
-   <property name="emailAddress" value="${sport.email}"></property>
-   <property name="team" value="${sport.team}"></property>
-   </bean>
    
    <bean id="myFortuneService"
          class="com.luv2code.springdemo.HappyFortuneService">
