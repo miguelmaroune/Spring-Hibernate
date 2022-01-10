@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/Hello")
 public class HelloWorldController {
 	
 	//need a controller method to show the initial HTML form
@@ -44,4 +46,20 @@ public class HelloWorldController {
 		return "helloWorld";
 	}
 	
+	//add data to the model
+	@RequestMapping("/processFormVersionThree")
+	public String processFormVersionThree(
+			@RequestParam("studentName") String name , Model model) 
+	{
+		//@RequestParam will bind the value automatically to name 
+		
+		name = name.toUpperCase();
+		
+		String result = "Hey my Friend From V3 !  "+name;
+		
+		model.addAttribute("message",result);
+		
+		return "helloWorld";
+	}	
+
 }
