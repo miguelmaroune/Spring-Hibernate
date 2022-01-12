@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 //if we dont specify the bean id the default will be tennisCoach
-@Component("tennisCoach")
+@Component
 public class TennisCoach implements Coach{
 
 	private FortuneService fortuneService;
